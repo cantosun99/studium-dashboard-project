@@ -1,5 +1,7 @@
 """Ansichtskomponente für das Studien-Dashboard mit customtkinter."""
 
+from datetime import date
+
 import customtkinter as ctk
 from tkinter import messagebox, Canvas
 from controller import DashboardController
@@ -335,10 +337,23 @@ class DashboardView:
         self.lbl_note_val.pack(anchor="w", padx=14, pady=(2, 0))
         self._reg(self.lbl_note_val, text_color="text")
 
-        self.lbl_note_ziel = self._label(k, "Ziel: -", size=12,
-                                         color=self._t("warning"))
-        self.lbl_note_ziel.pack(anchor="w", padx=14)
-        self._reg(self.lbl_note_ziel, text_color="warning")
+        ziel_note_row = ctk.CTkFrame(k, fg_color=self._t("panel"))
+        ziel_note_row.pack(fill="x", padx=14)
+        self._reg(ziel_note_row, fg_color="panel")
+        lbl_ziel_note = self._label(ziel_note_row, "Ziel:", size=10,
+                                    color=self._t("text_dim"))
+        lbl_ziel_note.pack(side="left")
+        self._reg(lbl_ziel_note, text_color="text_dim")
+        self.entry_ziel_note = ctk.CTkEntry(
+            ziel_note_row, width=50, height=22,
+            fg_color=self._t("surface"), border_color=self._t("border"),
+            text_color=self._t("warning"), corner_radius=4,
+            font=ctk.CTkFont(size=11),
+        )
+        self.entry_ziel_note.pack(side="left", padx=(4, 0))
+        self._reg(self.entry_ziel_note, fg_color="surface",
+                  border_color="border", text_color="warning")
+        self.entry_ziel_note.bind("<FocusOut>", self._ziel_note_aktualisieren)
 
         self.bar_note = self._progress(k, self._t("warning"), 6)
         self.bar_note.pack(fill="x", padx=14, pady=(6, 2))
@@ -373,14 +388,14 @@ class DashboardView:
         tl_labels = ctk.CTkFrame(k, fg_color=self._t("panel"))
         tl_labels.pack(fill="x", padx=14)
         self._reg(tl_labels, fg_color="panel")
-        lbl_l = self._label(tl_labels, "Dez 2024", size=10,
+        self.lbl_tl_start = self._label(tl_labels, "-", size=10,
                             color=self._t("text_dim"))
-        lbl_l.pack(side="left")
-        self._reg(lbl_l, text_color="text_dim")
-        lbl_r = self._label(tl_labels, "Dez 2026", size=10,
+        self.lbl_tl_start.pack(side="left")
+        self._reg(self.lbl_tl_start, text_color="text_dim")
+        self.lbl_tl_end = self._label(tl_labels, "-", size=10,
                             color=self._t("text_dim"))
-        lbl_r.pack(side="right")
-        self._reg(lbl_r, text_color="text_dim")
+        self.lbl_tl_end.pack(side="right")
+        self._reg(self.lbl_tl_end, text_color="text_dim")
 
         tl_sub = ctk.CTkFrame(k, fg_color=self._t("panel"))
         tl_sub.pack(fill="x", padx=14, pady=(2, 14))
@@ -400,6 +415,44 @@ class DashboardView:
                                         color=self._t("text_dim"))
         self.lbl_tl_offen.pack(side="right")
         self._reg(self.lbl_tl_offen, text_color="text_dim")
+
+        # --- Einstellungszeile: Startdatum + Zieldauer ---
+        zeit_einst = ctk.CTkFrame(k, fg_color=self._t("panel"))
+        zeit_einst.pack(fill="x", padx=14, pady=(6, 10))
+        zeit_einst.grid_columnconfigure((0, 2), weight=0)
+        self._reg(zeit_einst, fg_color="panel")
+
+        lbl = self._label(zeit_einst, "Start:", size=10,
+                          color=self._t("text_dim"))
+        lbl.grid(row=0, column=0, sticky="e", padx=(0, 3), pady=2)
+        self._reg(lbl, text_color="text_dim")
+
+        self.entry_startdatum = ctk.CTkEntry(
+            zeit_einst, width=100, height=22,
+            fg_color=self._t("surface"), border_color=self._t("border"),
+            text_color=self._t("text"), corner_radius=4,
+            font=ctk.CTkFont(size=10), placeholder_text="YYYY-MM-DD",
+        )
+        self.entry_startdatum.grid(row=0, column=1, padx=(0, 8), pady=2)
+        self._reg(self.entry_startdatum, fg_color="surface",
+                  border_color="border", text_color="text")
+        self.entry_startdatum.bind("<FocusOut>", self._startdatum_aktualisieren)
+
+        lbl = self._label(zeit_einst, "Monate:", size=10,
+                          color=self._t("text_dim"))
+        lbl.grid(row=0, column=2, sticky="e", padx=(0, 3), pady=2)
+        self._reg(lbl, text_color="text_dim")
+
+        self.entry_ziel_monate = ctk.CTkEntry(
+            zeit_einst, width=50, height=22,
+            fg_color=self._t("surface"), border_color=self._t("border"),
+            text_color=self._t("text"), corner_radius=4,
+            font=ctk.CTkFont(size=10),
+        )
+        self.entry_ziel_monate.grid(row=0, column=3, padx=(0, 0), pady=2)
+        self._reg(self.entry_ziel_monate, fg_color="surface",
+                  border_color="border", text_color="text")
+        self.entry_ziel_monate.bind("<FocusOut>", self._ziel_monate_aktualisieren)
 
     # -----------------------------------------------------------------------
     # Unteres Grid
@@ -706,7 +759,36 @@ class DashboardView:
         self.studiengang = studiengang
         self._modul_tabelle_fuellen()
         self._dropdowns_fuellen()
+        self._einstellungen_fuellen()
         self._anzeige_aktualisieren()
+
+    def _einstellungen_fuellen(self) -> None:
+        """Bevölkert die Einstellungs-Eingabefelder."""
+        # Startdatum
+        self.entry_startdatum.delete(0, "end")
+        if self.studiengang.start_datum is not None:
+            self.entry_startdatum.insert(0,
+                                         self.studiengang.start_datum.isoformat())
+
+        # Ziel-Studienzeit
+        self.entry_ziel_monate.delete(0, "end")
+        self.entry_ziel_monate.insert(0,
+                                      str(self.studiengang.ziel_studienzeit_monate))
+
+        # Ziel-Notendurchschnitt
+        self.entry_ziel_note.delete(0, "end")
+        self.entry_ziel_note.insert(0,
+                                    str(self.studiengang.ziel_notendurchschnitt))
+
+    def _format_monat(self, datum_str: str) -> str:
+        """Formatiert ein ISO-Datum (YYYY-MM-DD) als 'Mon YYYY'."""
+        if not datum_str:
+            return "-"
+        monate = {"01": "Jan", "02": "Feb", "03": "Mär", "04": "Apr",
+                  "05": "Mai", "06": "Jun", "07": "Jul", "08": "Aug",
+                  "09": "Sep", "10": "Okt", "11": "Nov", "12": "Dez"}
+        monat, jahr = datum_str[:7].split("-")
+        return f"{monate.get(monat, monat)} {jahr}"
 
     def _anzeige_aktualisieren(self) -> None:
         daten = self.controller.get_dashboard_daten(self.studiengang)
@@ -726,8 +808,7 @@ class DashboardView:
         note = daten["durchschnittsnote"]
         self.lbl_note_val.configure(
             text=str(note) if note is not None else "-")
-        self.lbl_note_ziel.configure(
-            text=f"Ziel: {daten['ziel_notendurchschnitt']}")
+        # Ziel-Notendurchschnitt wird im Eingabefeld angezeigt
         if note is not None:
             if daten["ist_notenziel_erreichbar"]:
                 err = daten["erreichte_ects"]
@@ -760,7 +841,7 @@ class DashboardView:
         verblib = max(ziel_m - verstr, 0)
         self.lbl_zeit_val.configure(text=f"{verblib:.0f} Monate")
         self.lbl_zeit_sub.configure(
-            text=f"verbleibend bis {daten.get('zieldatum', 'Dez 2026')}")
+            text=f"verbleibend bis {daten.get('zieldatum', '-')}")
 
         self.tl_canvas.update_idletasks()
         w = self.tl_canvas.winfo_width()
@@ -778,6 +859,8 @@ class DashboardView:
 
         self.lbl_tl_done.configure(text=f"{verstr:.0f} Mon. absolviert")
         self.lbl_tl_offen.configure(text=f"{verblib:.0f} Mon. offen")
+        self.lbl_tl_start.configure(text=daten.get("start_datum", "-"))
+        self.lbl_tl_end.configure(text=daten.get("zieldatum", "-"))
 
     def _semester_aktualisieren(self, daten: dict) -> None:
         for i, sem in enumerate(daten["semester_fortschritt"]):
@@ -885,6 +968,81 @@ class DashboardView:
         self._pruefung_by_index(index).datum = text or "offen"
         entry.delete(0, "end")
         entry.insert(0, text)
+        self._anzeige_aktualisieren()
+
+    # -----------------------------------------------------------------------
+    # Einstellungs-Eingabefelder
+    # -----------------------------------------------------------------------
+
+    def _startdatum_aktualisieren(self, event: object) -> None:
+        text = self.entry_startdatum.get().strip()
+        if text == "":
+            self.studiengang.start_datum = None
+            self.entry_startdatum.delete(0, "end")
+            self._anzeige_aktualisieren()
+            return
+        try:
+            jahr, monat, tag = text.split("-")
+            datum = date(int(jahr), int(monat), int(tag))
+        except (ValueError, TypeError):
+            messagebox.showerror(
+                "Fehler",
+                "Ungültiges Datum. Bitte im Format YYYY-MM-DD eingeben.")
+            self._anzeige_aktualisieren()
+            return
+        self.studiengang.start_datum = datum
+        self.entry_startdatum.delete(0, "end")
+        self.entry_startdatum.insert(0, datum.isoformat())
+        self._anzeige_aktualisieren()
+
+    def _ziel_monate_aktualisieren(self, event: object) -> None:
+        text = self.entry_ziel_monate.get().strip()
+        if text == "":
+            self.studiengang.ziel_studienzeit_monate = 36
+            self._anzeige_aktualisieren()
+            return
+        try:
+            wert = int(text)
+        except ValueError:
+            messagebox.showerror(
+                "Fehler",
+                "Ungültige Eingabe. Bitte eine ganze Zahl eingeben.")
+            self._anzeige_aktualisieren()
+            return
+        if wert <= 0:
+            messagebox.showerror(
+                "Fehler",
+                "Die Zieldauer muss größer als 0 sein.")
+            self._anzeige_aktualisieren()
+            return
+        self.studiengang.ziel_studienzeit_monate = wert
+        self.entry_ziel_monate.delete(0, "end")
+        self.entry_ziel_monate.insert(0, str(wert))
+        self._anzeige_aktualisieren()
+
+    def _ziel_note_aktualisieren(self, event: object) -> None:
+        text = self.entry_ziel_note.get().strip().replace(",", ".")
+        if text == "":
+            self.studiengang.ziel_notendurchschnitt = 2.0
+            self._anzeige_aktualisieren()
+            return
+        try:
+            wert = float(text)
+        except ValueError:
+            messagebox.showerror(
+                "Fehler",
+                "Ungültige Eingabe. Bitte eine Zahl zwischen 1,0 und 5,0.")
+            self._anzeige_aktualisieren()
+            return
+        if not (1.0 <= wert <= 5.0):
+            messagebox.showerror(
+                "Fehler",
+                "Der Ziel-Notendurchschnitt muss zwischen 1,0 und 5,0 liegen.")
+            self._anzeige_aktualisieren()
+            return
+        self.studiengang.ziel_notendurchschnitt = wert
+        self.entry_ziel_note.delete(0, "end")
+        self.entry_ziel_note.insert(0, str(wert))
         self._anzeige_aktualisieren()
 
     def _pruefung_by_index(self, index: int) -> Pruefungsleistung:

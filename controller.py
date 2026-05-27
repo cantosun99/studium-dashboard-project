@@ -1,5 +1,7 @@
 """Controller für das Studien-Dashboard."""
 
+from datetime import date
+
 from repository import DatenRepository
 from domain import Studiengang
 
@@ -50,9 +52,28 @@ class DashboardController:
                             "datum": pruefung.datum,
                         })
 
+        # Berechne Start- und Zieldatum als formatierte Strings
+        _MONATE = {"01": "Jan", "02": "Feb", "03": "Mär", "04": "Apr",
+                   "05": "Mai", "06": "Jun", "07": "Jul", "08": "Aug",
+                   "09": "Sep", "10": "Okt", "11": "Nov", "12": "Dez"}
+
+        def _format_dt(d: date) -> str:
+            return f"{_MONATE[d.strftime('%m')]} {d.year}"
+
+        start_str = _format_dt(studiengang.start_datum) if studiengang.start_datum else ""
+        ziel_str = ""
+        if studiengang.start_datum:
+            sd = studiengang.start_datum
+            zm = studiengang.ziel_studienzeit_monate
+            zj = sd.year + (sd.month - 1 + zm) // 12
+            zm_monat = (sd.month - 1 + zm) % 12 + 1
+            ziel_str = _format_dt(date(zj, zm_monat, sd.day))
+
         return {
             "hochschule": studiengang.hochschule,
             "studiengang_name": studiengang.name,
+            "start_datum": start_str,
+            "zieldatum": ziel_str,
             "erreichte_ects": erreichte_ects,
             "gesamt_ects": studiengang.gesamt_ects,
             "ects_prozentsatz": round(
