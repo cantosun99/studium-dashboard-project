@@ -1,0 +1,445 @@
+{
+  "startDatum": "2024-12-01",
+  "zielStudienzeitMonate": 36,
+  "zielNotendurchschnitt": 2.0,
+  "semester": [
+    {
+      "nummer": 1,
+      "module": [
+        {
+          "name": "Grundlagen der industriellen Softwaretechnik (IGIS01)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Grundlagen der industriellen Softwaretechnik (IGIS01)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Einführung in das wissenschaftliche Arbeiten für IT und Technik (DLBWIRITT01)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Einführung in das wissenschaftliche Arbeiten für IT und Technik (DLBWIRITT01)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Requirements Engineering (DIREN01)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Requirements Engineering (DIREN01)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Spezifikation (DISPE01)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Spezifikation (DISPE01)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Grundlagen der objektorientierten Programmierung mit Java (IOBP01)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Grundlagen der objektorientierten Programmierung mit Java (IOBP01)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Datenmodellierung und Datenbanksysteme (IDBS01)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Datenmodellierung und Datenbanksysteme (IDBS01)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nummer": 2,
+      "module": [
+        {
+          "name": "Datenstruktur und Java-Klassenbibliothek (DLBCSDSJCL02_D)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Datenstruktur und Java-Klassenbibliothek (DLBCSDSJCL02_D)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Kollaboratives Arbeiten (DLBKA01)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Kollaboratives Arbeiten (DLBKA01)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Programmierung von Webanwendungsoberflächen (IPWA01-01)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Programmierung von Webanwendungsoberflächen (IPWA01-01)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Algorithmen, Datenstrukturen und Programmiersprachen (DLBIADPS01-01)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Algorithmen, Datenstrukturen und Programmiersprachen (DLBIADPS01-01)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Qualitätssicherung im Softwareprozess (IQSS01)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Qualitätssicherung im Softwareprozess (IQSS01)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "IT-Architekturmanagement (IAMG01)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "IT-Architekturmanagement (IAMG01)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nummer": 3,
+      "module": [
+        {
+          "name": "Programmierung von industriellen Informationssystemen mit Java EE (IPWA02-01)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Programmierung von industriellen Informationssystemen mit Java EE (IPWA02-01)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Ethik und Nachhaltigkeit in der IT (DLBSEPENIT01_D)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Ethik und Nachhaltigkeit in der IT (DLBSEPENIT01_D)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "IT-Projektmanagement (IPMG01-01)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "IT-Projektmanagement (IPMG01-01)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Techniken und Methoden der agilen Softwareentwicklung (DLBWIWTMAS01)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Techniken und Methoden der agilen Softwareentwicklung (DLBWIWTMAS01)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Mobile Software Engineering (DLBCSEMSE01_D)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Mobile Software Engineering (DLBCSEMSE01_D)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Seminar Software Engineering (ISSE01)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Seminar Software Engineering (ISSE01)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nummer": 4,
+      "module": [
+        {
+          "name": "Projekt: Agiles Software Engineering (IWNF02)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Projekt: Agiles Software Engineering (IWNF02)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "IT-Infrastruktur (DLBSEPITI01-01_D)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "IT-Infrastruktur (DLBSEPITI01-01_D)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "IT-Servicemanagement (DLBCSITSM01-01_D)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "IT-Servicemanagement (DLBCSITSM01-01_D)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Projekt: Mobile Software Engineering (DLBCSEMSE02_D)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Projekt: Mobile Software Engineering (DLBCSEMSE02_D)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Projekt: Cloud Programming (DLBSEPCP01_D)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Projekt: Cloud Programming (DLBSEPCP01_D)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Einführung in Datenschutz und IT-Sicherheit (DLBISIC01)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Einführung in Datenschutz und IT-Sicherheit (DLBISIC01)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nummer": 5,
+      "module": [
+        {
+          "name": "DevOps und Continuous Delivery (DLBSEPDOCD01_D)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "DevOps und Continuous Delivery (DLBSEPDOCD01_D)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Gestaltung und Ergonomie von User Interfaces (DLMIIUID01-01)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Gestaltung und Ergonomie von User Interfaces (DLMIIUID01-01)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Einführung in die Programmierung mit Python (DLBDSIPWP01_D)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Einführung in die Programmierung mit Python (DLBDSIPWP01_D)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Projekt: Software Development (DLBSEPPSD01_D)",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Projekt: Software Development (DLBSEPPSD01_D)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Wahlpflichtmodul A (noch nicht gewählt)",
+          "modulart": "Wahlpflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Wahlpflichtmodul A (Prüfung 1)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            },
+            {
+              "name": "Wahlpflichtmodul A (Prüfung 2)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nummer": 6,
+      "module": [
+        {
+          "name": "Wahlpflichtmodul B (noch nicht gewählt)",
+          "modulart": "Wahlpflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Wahlpflichtmodul B (Prüfung 1)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            },
+            {
+              "name": "Wahlpflichtmodul B (Prüfung 2)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Wahlpflichtmodul C (noch nicht gewählt)",
+          "modulart": "Wahlpflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Wahlpflichtmodul C (Prüfung 1)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            },
+            {
+              "name": "Wahlpflichtmodul C (Prüfung 2)",
+              "ectsPunkte": 5,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        },
+        {
+          "name": "Bachelorarbeit",
+          "modulart": "Pflicht",
+          "pruefungsleistungen": [
+            {
+              "name": "Bachelorarbeit (BBAK01)",
+              "ectsPunkte": 9,
+              "datum": "offen",
+              "note": null
+            },
+            {
+              "name": "Kolloquium (BBAK02)",
+              "ectsPunkte": 1,
+              "datum": "offen",
+              "note": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

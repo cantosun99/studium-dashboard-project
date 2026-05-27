@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.spec
+
+# Virtuelles Environment
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Verschlüsselte Daten
+studien_daten.json
+
+# Tests
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
