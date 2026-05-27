@@ -49,7 +49,7 @@ jobs:
             ## Studien-Dashboard ${{ github.ref_name }}
 
             ### Windows (x64)
-            - [StudienDashboard.exe](StudienDashboard.exe) - Fertige .exe, keine Installation nötig
+            - [StudienDashboard.exe](https://github.com/cantosun99/studium-dashboard-project/releases/download/v1.0.0/StudienDashboard.exe) - Fertige .exe, keine Installation nötig
 
             ### Nutzung
             1. Datei herunterladen
