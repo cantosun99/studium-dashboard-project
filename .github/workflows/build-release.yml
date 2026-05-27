@@ -29,6 +29,7 @@ jobs:
           pip install customtkinter darkdetect packaging cryptography
 
       - name: Build executable with PyInstaller
+        shell: cmd
         run: |
           pyinstaller ^
             --onefile ^
