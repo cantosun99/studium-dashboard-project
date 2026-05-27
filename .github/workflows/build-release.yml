@@ -37,7 +37,7 @@ jobs:
             --name "StudienDashboard" ^
             --add-data "studien_daten.enc:." ^
             --add-data "studien_daten_vorlage.json:." ^
-            --icon NONE ^
+            --icon icon.ico ^
             app.py
 
       - name: Upload .exe as Release Asset
@@ -48,16 +48,27 @@ jobs:
           body: |
             ## Studien-Dashboard ${{ github.ref_name }}
 
-            **Windows (x64)**
-            - [StudienDashboard.exe](StudienDashboard.exe) – Single-File, keine Installation nötig
+            ### Windows (x64)
+            - [StudienDashboard.exe](StudienDashboard.exe) - Fertige .exe, keine Installation nötig
 
             ### Nutzung
             1. Datei herunterladen
             2. `StudienDashboard.exe` starten
-            3. "Meine Daten laden" wählen und den Schlüssel eingeben
+            3. "Meine Daten laden -> Ja" wählen und den Schlüssel eingeben.
+              Der Schlüssel liegt der Installationsanleitung in der Atlas Abgabe bei.
             4. Fertig!
 
-            > **Schlüssel:** Liegt der Abgabe bei (per E-Mail).
-            > Falls dein Antivirus die Datei blockiert: Rechtsklick → Eigenschaften → "Entsperren" aktivieren.
+            ### Anti-Virus Hinweis
+            Da dies eine nicht-signierte .exe ist, wird sehr wahrscheinlich sowohl der Browser den Download, als auch Windows Defender das Ausführen der .exe verhindern wollen.
+            
+            **Falls der Browser den Download blockiert:**
+            1. Im Browser die aktuellen Downloads anzeigen lassen
+            2. Die Meldung sollte "StudienDashboard.exe kann nicht sicher heruntergeladen werden" heißen
+            3. Rechts auf die drei Punkte klicken
+            4. Auf "Beibehalten" klicken
+            
+            **Falls Windows Defender den Download blockiert:**
+            1. Auf "Weitere Informationen" klicken
+            2. Auf "Trotzdem ausführen" klicken
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
